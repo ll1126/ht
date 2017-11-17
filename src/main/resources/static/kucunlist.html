@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/thirdParty/bootstrap.css">
+    <link rel="stylesheet" href="css/thirdParty/bootstrap-table.min.css">
+    <style>
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>库存</h1>
+            </div>
+        </div>
+        <hr />
+        <div class="channel-sreach">
+            <div class="row">
+                <div class="col-lg-1">
+                    <label >型号查询:</label>
+                </div>
+                <div class="col-lg-1">
+                    <input class="form-control" id="xinghao"/>
+                </div>
+                <div class="col-lg-offset-3">
+                    <button type="button" style="width:100px;" class="btn btn-default" id="cx">查询</button>
+                </div>
+
+            </div>
+            <div>
+                <!--上传按钮-->
+            </div>
+        </div>
+        <hr />
+        <div class="row" style="margin:0 5px;">
+            <table id="channel-application"></table>
+        </div>
+    </div>
+    <script src="js/thirdParty/jquery.min.js"></script>
+    <script src="js/thirdParty/bootstrap.js"></script>
+    <script src="js/thirdParty/bootstrap-table.min.js"></script>
+    <script src="js/thirdParty/bootstrap-table-zh-CN.min.js"></script>
+    <script src="scripts/list.js"></script>
+    <script>
+        $('#channel-application').bootstrapTable({
+        	striped: true,
+        	pagination: true, 			//是否显示分页（*）
+        	pageNumber:1,               //初始化加载第一页，默认第一页                
+        	pageSize: 10,               //每页的记录行数（*）               
+        	pageList: [10, 25, 50, 100],
+        	
+        	columns: [{
+                field: 'id',
+                title: '编号'
+            }, {
+                field: 'cMingCheng',
+                title: '名称'
+            }, {
+                field: 'cXingHao',
+                title: '型号'
+            }, {
+                field: 'fShuLiang',
+                title: '库存量'
+            }, {
+                field: 'fMoney',
+                title: '价格'
+            }, {
+                field: 'cChangShang',
+                title: '厂商'
+            } ],
+            data: []
+        });
+    </script>
+</body>
+
+</html>

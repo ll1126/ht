@@ -1,0 +1,18 @@
+.btn-group {
+    width: 100px;
+}
+
+select,
+input {
+    width: 196px !important;
+    background-color: #fff !important;
+}
+
+.form-group {
+    margin-top: 10px;
+}
+
+button {
+    margin-right: 535px;
+    width: 100px;
+}

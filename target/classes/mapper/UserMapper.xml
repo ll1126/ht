@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.Mapper.CHDao">
+    <!--存货列表-->
+    <select id="findCH" resultType="map">
+        select * from cunhuo <if test="xinghao!=null">where cXingHao = #{xinghao}</if>
+    </select>
+
+    <!--出库记录列表-->
+    <select id="findCK" resultType="map">
+        select * from chuku
+    </select>
+
+    <!--买家列表-->
+    <select id="findMJ" resultType="map">
+        select * from maijia
+    </select>
+
+</mapper>

@@ -1,0 +1,11 @@
+com\test\Controller\Controller1.class
+com\test\Util\JsonResult.class
+com\test\springbootTestApplication.class
+com\test\Util\CorsFilter.class
+com\test\Util\WebMvcConfig.class
+com\test\Util\Swagger2Config.class
+com\test\Util\EhcacheUtil.class
+com\test\Service\CHService.class
+com\test\Mapper\CHDao.class
+com\test\Util\JsonpAdvice.class
+com\test\Service\impl\CHSericeImpl.class

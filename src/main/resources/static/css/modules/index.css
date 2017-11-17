@@ -1,0 +1,39 @@
+.layui-body .layui-body-top,
+.layui-body-container {
+    margin: 5px 0px 0px 5px;
+    padding-left: 5px;
+}
+
+.layui-header {
+    background-color: #393d49 !important;
+}
+
+.layui-side {
+    border-top: 2px solid #009688;
+}
+
+.layui-user {
+    float: right;
+}
+
+.logo {
+    float: left;
+    width: 200px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.logo a {
+    color: #c2c2c2;
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.layui-footer p {
+    line-height: 44px;
+    text-align: center;
+}
