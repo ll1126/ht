@@ -110,13 +110,24 @@ public class Controller1 {
 
 
     /**
-     * 远程改的
+     * sssssss
      * @return
      */
-    @PostMapping(path = "/yc")
+    @PostMapping(path = "/sssssss")
     @ResponseBody
-    public JsonResult yc(){
+    public JsonResult sssssss(){
 
+        return new JsonResult();
+    }
+    
+     /**
+     * sssssssa
+     * @return
+     */
+    @PostMapping(path = "/sssssssa")
+    @ResponseBody
+    public JsonResult sssssssa(){
+             int a = cService.zztg();
         return new JsonResult();
     }
 }
