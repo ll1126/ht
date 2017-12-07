@@ -15,5 +15,36 @@
     <select id="findMJ" resultType="map">
         select * from maijia
     </select>
+    <!--清空发货清单-->
+    <delete id="del">
+        delete from xinjianQD
+    </delete>
+    <!--保存发货清单-->
+    <insert id="bc">
+       insert into xinjianQD(spmc,spxh,spdj,spsl,spzj) values(#{spmc},#{spxh},#{spdj},1,#{spdj});
+    </insert>
 
+    <!--清单-->
+    <select id="findQD" resultType="map">
+        select * from xinjianQD
+    </select>
+
+    <!--修改清单数据(单价)-->
+    <update id="xg">
+        update xinjianQD set spdj =#{spdj},spsl=#{spsl},spzj=#{spzj} where id = #{id}
+    </update>
+    <!--根据id查询清单-->
+    <select id="cxqd" resultType="map">
+        select spdj,spsl,spzj from xinjianQD where id=#{id}
+    </select>
+
+    <!--总价-->
+    <select id="zj" resultType="String">
+      select SUM(spzj) from xinjianQD
+    </select>
+
+    <!--生成出库记录-->
+    <insert id="scck">
+        insert into chuku(tChuDate,cMaiJia,fMoney,cQingDan) values (#{time},#{maijia},#{money},#{qd})
+    </insert>
 </mapper>

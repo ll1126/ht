@@ -2,28 +2,168 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/thirdParty/bootstrap.css">
-    <link rel="stylesheet" href="css/thirdParty/bootstrap-table.min.css">
-    <style>
-        .row {
-            margin-top: 10px;
-        }
-    </style>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/thirdParty/bootstrap.css">
+	<link rel="stylesheet" href="css/thirdParty/bootstrap-table.min.css">
+	<style>
+		h1 {
+			font-size: 36px;
+		}
+	</style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1>发货清单</h1>
-            </div>
-        </div>
-        <hr />
-    <script src="js/thirdParty/jquery.min.js"></script>
-    <script src="js/thirdParty/bootstrap.js"></script>
-    <script src="js/thirdParty/bootstrap-table.min.js"></script>
-    <script src="js/thirdParty/bootstrap-table-zh-CN.min.js"></script>
-    <script src="scripts/list.js"></script>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>发货清单</h1>
+			</div>
+			<div class="row">
+				<div class="col-lg-1 col-lg-offset-3">
+					<input type="submit" class="btn btn-default save1" id="zztg" value="最终通过" />
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="channel-application">
+			<div class="service-info-added">
+				<!--两套模板渲染官方和代理服务商信息-->
+				<div class="row" style="margin:0 5px;">
+					<table class="layui-table" id="addserviceinfo" lay-filter="addserviceinfo"></table>
+				</div>
+
+			</div>
+			<div class="office-info" >
+			<hr />
+				<div class="agent-info">
+
+					<div class="form-group">
+						<div class="row" style="margin:0 5px 5px 5px;">
+							<h2>录入记录</h2>
+						</div>
+						<div class="row">
+							<div class="col-lg-1">
+								<label >商品型号:</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="text" autocomplete="off" class="form-control" id="spxh" list="spList" name="spxh" placeholder="" required>
+								<datalist id="spList">
+								</datalist>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-1">
+								<label >商品名称:</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="text" class="form-control" id="spmc" required autocomplete="off"
+									placeholder="" name="spmc">
+							</div>
+							<div class="col-lg-1">
+								<label >商品价格:</label>
+							</div>
+							<div class="col-lg-2">
+								<input type="text" class="form-control" id="spdj" required autocomplete="off"
+									placeholder="" name="spdj">
+							</div>
+						</div>
+					</div>
+					<hr />
+					<div class="row">
+						<div class="col-lg-1 col-lg-offset-3">
+							<input type="submit" class="btn btn-default save1" id="bc" value="保存" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/thirdParty/jquery.min.js"></script>
+	<script src="js/thirdParty/bootstrap.js"></script>
+	<script src="js/thirdParty/bootstrap-table.min.js"></script>
+	<script src="js/thirdParty/bootstrap-table-zh-CN.min.js"></script>
+	<script src="js/thirdParty/bootstrap-editable.js"></script>
+	<script src="js/thirdParty/bootstrap-table-editable.js"></script>
+	<script src="scripts/fahuo.js"></script>
+	<script>
+		$('#addserviceinfo').bootstrapTable({
+			//行内修改
+            onEditableSave: function (field, row, oldValue) {
+				if(field =='spdj'){
+				     b = row.spdj;
+				}
+				if(field == 'spsl'){
+				     b = row.spsl;
+				}
+                $.ajax({
+					url: "xg",
+					data: {
+					    "field": field,
+                        "b": b,
+						"id":row.id
+					},
+                    success: function (result) {
+                        layer.msg("修改成功");
+                        //加载表格
+                        $("#addserviceinfo").bootstrapTable("load", result.content);
+
+                    },
+                    error: function () {
+                        layer.msg("修改失败");
+                    },
+                    complete: function () {
+
+                    }
+                });
+            },
+			columns : [
+				{
+					field : 'spmc',
+					title : '商品名称'
+				},
+                {
+                    field : 'spxh',
+                    title : '商品型号'
+                },
+				{
+					field : 'spdj',
+					title : '商品单价',
+                    editable: {
+                        type: 'number',
+                        step: "0.01",
+                        validate: function (value) {
+                            if ($.trim(value) == '') {
+                                return '单价不能为空!';
+                            }
+                        }
+                    }
+                },
+				{
+                    field : 'spsl',
+                    title : '数量',
+                    editable: {
+                        type: 'number',
+                        validate: function (value) {
+                            if ($.trim(value) == '' ) {
+                                return '数量不能为空!';
+                            }
+                            if(value<1){
+                                return '数量不能小于1!';
+							}
+                        }
+                    }
+                },
+                {
+                    field : 'spzj',
+                    title : '商品总价'
+                },
+				{
+					field : 'State',
+					title : '操作'
+				} ]
+		});
+	</script>
 
 </body>
 
