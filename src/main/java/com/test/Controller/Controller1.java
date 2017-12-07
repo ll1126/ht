@@ -97,37 +97,5 @@ public class Controller1 {
         return new JsonResult();
     }
 
-    /**
-     * 本地改的
-     * @return
-     */
-    @RequestMapping(path = "/pc")
-    @ResponseBody
-    public JsonResult pc(){
-        int a = cService.zztg();
-        return new JsonResult();
-    }
 
-
-    /**
-     * sssssss
-     * @return
-     */
-    @PostMapping(path = "/sssssss")
-    @ResponseBody
-    public JsonResult sssssss(){
-
-        return new JsonResult();
-    }
-    
-     /**
-     * sssssssa
-     * @return
-     */
-    @PostMapping(path = "/sssssssa")
-    @ResponseBody
-    public JsonResult sssssssa(){
-             int a = cService.zztg();
-        return new JsonResult();
-    }
 }
