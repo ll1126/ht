@@ -56,4 +56,15 @@ public class Controller1 {
         List<Map> list = cService.findMJ();
         return new JsonResult(list);
     }
+    
+    /**
+     * 远程改的
+     * @return
+     */
+    @PostMapping(path = "/yc")
+    @ResponseBody
+    public JsonResult yc(){
+       
+        return new JsonResult();
+    }
 }
